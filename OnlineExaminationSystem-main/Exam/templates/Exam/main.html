@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}
+   <script src="{% static 'exam/main.js' %}", defer ></script>
+{% endblock scripts %}
+
+ {% block title %} 
+ HOME  
+ {% endblock title %} 
+
+ {% block content %}
+ 
+<div class="modal fade" id="ExamstaticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Announcement</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal-body-confirm">
+        hello karera welcome in exam
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="start-button" >Procced</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div> {% comment %} style="margin-top:110px"{% endcomment %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">List of exams</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+      
+    
+  </div>
+</nav>
+
+<div >
+<P>{% for obj in object_list %}</P></div>
+
+</div>
+
+
+<button
+  class="btn btn-link modal-button"
+  data-pk="{{obj.pk}}"
+  data-exam="{{obj.name}}"
+  data-question="{{obj.number_of_questions}}"
+  data-time="{{obj.time}}"
+  data-pass="{{obj.required_score_to_pass}}"
+  data-bs-toggle="modal" 
+  data-bs-target="#ExamstaticBackdrop">
+    {{obj.name}}
+</button>
+
+{% endfor %}
+
+ {% endblock content %}

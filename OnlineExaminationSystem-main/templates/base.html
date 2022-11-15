@@ -1,0 +1,164 @@
+{% comment %} {% load bootstrap %} {% load bootstrap_css %}
+{% load bootstrap_javascript jquery='full' %} 
+{% csrf_token %} {% lod bootstrap_form form %}
+{% load icons %} {% icon 'edit' %} {% load icons %}  {% endcomment %}
+
+{% load static %}
+ 
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+<link rel="shortcut icon" href="#">
+
+  <!-- reference your installed Font Awesome Free package's files here -->
+  <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+
+<link rel="stylesheet" href={% static 'bootstrap/css/bootstrap.css' %}>
+<link rel="stylesheet" href={% static 'bootstrap/css/bootstrap.min.css' %}>
+<link rel="stylesheet" href={% static 'bootstrap/css/bootstrap.css.map' %}>
+<link rel="stylesheet" href={% static 'bootstrap/css/bootstrap.min.css.map' %}>
+
+
+{% block style %}
+<link rel="stylesheet" href={% static 'style.css' %}>
+{% endblock style %}
+
+
+<title> EXAM{% block title%} {% endblock title%}</title>
+<style type='text/css'>
+  
+    </style>
+</head>
+<body class="container">
+
+  {% load static %}
+{% comment %} header....................................................... {% endcomment %}
+
+<div class="header">
+  <img src="{% static 'Logo/uok-logo.png'%}" alt='home'/>
+  
+</div>
+{%block home%}
+{% load static %}
+<div>{% block log %}
+ {% comment %} <form id="foo"class="row justify-content-center foo">
+ <div class="card mb-3 mt-5 ml-20" style="max-width: 840px; border: none">
+  <div class="row g-0">
+    <div class="col-md-6">
+      <img src="{% static 'Logo/uok1.jpg'%}"class="img-fluid rounded-start" alt='home'/>
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <h5 class="card-title"><h3>Online Examination</h3></h5>
+        <p class="card-text">Dear uok student welcome to online exam you will login 
+        with your username and password and choose the exam you are here to do after
+         you have to read instruction careful before you proced<br/> <h4>GOODLUCK!</h4></p>
+         <p></p>
+        <a type="submit" href='{% url 'Exam:signup' %}' class="btn btn-primary" onclick="toggle_visibility('foo');">signup</a>
+        <a type="submit" href='{% url 'login' %}' class="btn btn-primary" onclick="toggle_visibility('foo');">login</a>
+      </div>
+    </div>
+  </div>
+</div>
+</form> {% endcomment %}
+
+{% endblock log %}</div>
+{%endblock home%}
+
+<div>
+{%if user.is_authenticated%}
+
+        {% block content %}{% endblock content %}
+        {% endif %}
+</div>
+
+
+
+
+
+
+{% comment %} ..................................................................... {% endcomment %}
+
+
+
+<div  class="footer">
+<div class="row">
+  <div class="col-sm-6">
+    
+        <h6 style="color:white;"> MORE INFORMATION ABOUT: </h6>
+                    <div class="footer-links">
+                        <ol type="none">
+                        <li><a href="https://uok.ac.rw/" target="_blank">University of kigali</a></li>
+                        <li><a href="https://mis.uok.ac.rw/" target="_blank">Uok MIS</a></li>
+                        <li><a href="http://online-results.uok.ac.rw/" target="_blank">Online result</a></li>
+                        <li><a href="https://elearning.uok.ac.rw/" target="_blank">E-learning</a></li>
+
+                        </ol>
+                    </div>
+      
+  </div> 
+  <div class="col-sm-6">
+    
+         <h6 style="color:white;"> CONTACT US: </h6>
+                        <div class="footer-address-block">
+                           <div class="footer-address">
+                              <p style="color:white;"><i class='fa fa-map-marker' ></i>KG 541 Street, Kigali , Rwanda.</p></div>
+                                <div class="footer-phone">
+                              <p style="color:white;"><i class='fa fa-phone-square' ></i>Phone: +250788303386</p></div>
+                           <div class="footer-email"><p style="color:white;"><i class='fa fa-envelope'></i>
+                           E-mail: <a href="mailto:E-mail: info@uok.ac.rw">E-mail: info@uok.ac.rw<br></a></p></div>
+                        </div>
+                        
+     
+  </div>
+</div>
+<p class="pa"> University of kigali powered by Karera tech</p>
+
+</div> 
+
+
+{% comment %} ..footer.............................................................................................................. {% endcomment %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+ integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+ integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{% comment %} <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script> {% endcomment %}
+
+{% block scripts %}
+  <script src={% static 'bootstrap/js/bootstrap.min.js'%}></script>
+  <script src={% static 'bootstrap/js/bootstrap.js'%}></script>
+  <script src={% static 'jquery/jquery-3.6.0.min.js' %}></script>
+  <script src={% static 'base.js' %}></script>
+{% endblock scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
+crossorigin="anonymous"></script>
+</boad>
+
+</html>

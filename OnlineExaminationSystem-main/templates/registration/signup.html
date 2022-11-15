@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% load crispy_forms_tags %}
+{% crispy form %}
+{% block log %}
+
+<div class='row justify-content-center' >
+<div class='col-6'>
+<div class='card mt-5 mb-5'>
+<div class='card-body'>
+
+{% comment %} <h1>register</h1> {% endcomment %}
+<h1>register</h1>
+<form method='POST' action='' novalidate>
+{% csrf_token %}
+{{form|crispy}}
+<button type="submit" name"create User" class="btn btn-primary" >signup</button>
+<a href='{% url 'login' %}' class='btn btn-link'> login</a>
+</form>
+</div>
+</div>
+</div>
+</div>
+{% endblock log%}

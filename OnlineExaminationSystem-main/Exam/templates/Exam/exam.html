@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% comment %} {% extends 'frontpage.html' %} {% endcomment %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'exam/exam.css' %}">
+{% block scripts %}
+   <script src="{% static 'exam/exam.js' %}" defer ></script>
+{% endblock scripts %}
+
+ {% block title %} 
+ 
+ {{obj.name}} 
+ {% endblock title %} 
+  
+ {% block content %}
+ <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    
+    <div class="row">
+    <div class="col">
+    <h3> {{obj.name}} Examination</h3> 
+   
+    </div>
+     <div class="col">
+    <h3>Welcome <b>{{user.username}}</b> </h3> 
+    {%csrf_token%}
+    
+    <a href='{% url 'logout' %}'class="btn btn-primary"> log out</a>
+    <a href='{% url 'password_change' %}'> change password</a>
+    </div>
+    <div class="col text-right ml-5"
+         style="margin-left:900px; font-size:20px" 
+         id="timer-box" >
+    </div>
+
+ </nav> 
+  
+<h3><p> Marks to pass exam {{obj.required_score_to_pass}}%</p>
+</h3>
+
+     <form id="exam-form" class="mt-3 mb-3">
+         {% csrf_token %}
+         <div id="exam-box"></div> 
+                        
+        <a href={% url 'Exam:main-view' %} class="btn btn-secondary mt-3 ">previous</a>
+        <button type="submit" class="btn btn-primary mt-3">submit</button>
+     
+    </form>
+<div id="score-box"></div>
+<div id="result-box"></div>
+ {% endblock content %}
+
+{% comment %}  {% endcomment %}
